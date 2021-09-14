@@ -13,8 +13,10 @@ function QuestionList({ questions, setQuestions }) {
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "DELETE"
     })
-    .then(() => setQuestions(questions))
-    // setQuestions(questions.filter(question => question.id !== id))
+    .then(() => {
+      const updatedQuestions = questions.filter(question => question.id !== id)
+      setQuestions(updatedQuestions)
+    })
   }
 
   function handleChange(id, correctIndex){
